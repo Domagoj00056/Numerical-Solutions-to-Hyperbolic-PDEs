@@ -119,42 +119,26 @@ $$
 
 ### Linear Advection Equation
 
-- Explicit schemes are **conditionally stable** and require  
-  $C = \frac{a \Delta t}{\Delta x} \leq 1$
+- Explicit schemes are **conditionally stable** and require  $C = \frac{a \Delta t}{\Delta x} \leq 1$
 
 - Instability occurs when $C > 1$ (e.g. $\Delta x = 5$, $\Delta t = 0.021$)
 
-- **Upwind** and **Lax**:
-  - First-order accurate  
-  - Introduce numerical diffusion  
+- **Upwind** and **Lax** are  First-order accurate but introduce numerical diffusion  
 
-- **Lax–Wendroff**:
-  - Second-order accurate  
-  - Provides better resolution of the solution  
+- **Lax–Wendroff** is Second-order accurate and provides better resolution of the solution  
 
 - **BTCS** is unconditionally stable but may produce oscillations  
 
----
 
 ### Inviscid Burgers’ Equation
-
-- Nonlinearity handled via flux $f(u) = \frac{u^2}{2}$  
 
 - Stability depends strongly on $\Delta t$:
   - $\Delta t = 0.14$ → unstable  
   - $\Delta t = 0.1$ → best balance  
   - $\Delta t = 0.05$ → stable but more diffusive  
 
-- **MacCormack** and **Lax–Wendroff**:
-  - Capture steep gradients well  
+- **MacCormack** and **Lax–Wendroff** captures steep gradients well  
 
-- **Lax method**:
-  - More diffusive  
+- **Lax method**  is more diffusive  
 
----
 
-### Overall
-
-- Stability governed by the **CFL condition**  
-- Trade-off between **accuracy, stability, and diffusion**  
-- Second-order methods outperform first-order methods but require careful parameter choice  
