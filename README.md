@@ -15,7 +15,7 @@ $$
 $$
 
 
-The project combines **theoretical analysis** (stability and consistency) with **numerical simulations** to study accuracy, stability, and computational efficiency. The theoretical analysis **Full Project Report:** [Click here to view the PDF](./report/project.pdf)
+The project combines **theoretical analysis** (stability and consistency) with **numerical simulations** to study accuracy, stability, and computational efficiency. The theoretical analysis 📄 **Full Project Report:** [Click here to view the PDF](./Project.pdf)
 
 
 ## 🧠 Mathematical Formulation
