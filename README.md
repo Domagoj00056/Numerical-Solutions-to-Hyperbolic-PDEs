@@ -1,5 +1,6 @@
 # Numerical-Solutions-to-Hyperbolic-PDEs
 
+
 # 📊 Numerical Solution of Hyperbolic PDEs
 
 ## 📖 Overview
@@ -8,68 +9,81 @@ This project investigates the numerical solution of **hyperbolic partial differe
 - Linear advection equation  
 - Inviscid Burgers’ equation  
 
-The project combines theoretical analysis (stability and consistency) with numerical simulations to study accuracy, stability, and computational efficiency.
+The project combines **theoretical analysis** (stability and consistency) with **numerical simulations** to study accuracy, stability, and computational efficiency.
 
 ---
 
 ## 🧠 Mathematical Formulation
 
-### Linear Advection Equation  
-$$ du/dt + a * du/dx = 0 $$
+### Linear Advection Equation
+$$
+\frac{\partial u}{\partial t} + a \frac{\partial u}{\partial x} = 0
+$$
 
-### Inviscid Burgers’ Equation  
-du/dt + d/dx (u² / 2) = 0
+### Inviscid Burgers’ Equation
+$$
+\frac{\partial u}{\partial t} + \frac{\partial}{\partial x}\left(\frac{u^2}{2}\right) = 0
+$$
 
-### Conservation Form  
+### Conservation Form
+$$
 u_t + f(u)_x = 0
+$$
 
 ---
 
 ## ⚙️ Numerical Methods
 
-### 1. First Upwind Scheme  
-U(k, n+1) = U(k, n) - c [U(k, n) - U(k-1, n)]
+### 1. First Upwind Scheme
+$$
+U_k^{n+1} = U_k^n - c \left(U_k^n - U_{k-1}^n \right)
+$$
 
 - First-order accurate  
-- Stable for c ≤ 1  
+- Stable for $c \leq 1$  
 - Introduces numerical diffusion  
 
 ---
 
-### 2. Lax Method  
-U(k, n+1) = 0.5 [U(k+1, n) + U(k-1, n)]  
-               - (c/2) [U(k+1, n) - U(k-1, n)]
+### 2. Lax Method
+$$
+U_k^{n+1} = \frac{1}{2}(U_{k+1}^n + U_{k-1}^n) - \frac{c}{2}(U_{k+1}^n - U_{k-1}^n)
+$$
 
 - First-order accurate  
-- More stable but diffusive  
+- Diffusive but stable  
 
 ---
 
-### 3. Lax–Wendroff Method  
-U(k, n+1) = U(k, n)  
-               - (c/2)[U(k+1, n) - U(k-1, n)]  
-               + (c²/2)[U(k-1, n) - 2U(k, n) + U(k+1, n)]
+### 3. Lax–Wendroff Method
+$$
+U_k^{n+1} = U_k^n - \frac{c}{2}(U_{k+1}^n - U_{k-1}^n) + \frac{c^2}{2}(U_{k-1}^n - 2U_k^n + U_{k+1}^n)
+$$
 
 - Second-order accurate  
-- Captures sharp gradients better  
+- Captures sharp gradients effectively  
 
 ---
 
-### 4. MacCormack Method  
+### 4. MacCormack Method
 
-Predictor:  
-U*(k) = U(k, n) - (dt/dx)[f(U(k+1, n)) - f(U(k, n))]
+**Predictor:**
+$$
+U_k^* = U_k^n - \frac{\Delta t}{\Delta x} \left[f(U_{k+1}^n) - f(U_k^n)\right]
+$$
 
-Corrector:  
-U(k, n+1) = 0.5 [U(k, n) + U*(k)  
-                        - (dt/dx)(f(U*(k)) - f(U*(k-1)))]
+**Corrector:**
+$$
+U_k^{n+1} = \frac{1}{2}\left(U_k^n + U_k^* - \frac{\Delta t}{\Delta x}(f(U_k^*) - f(U_{k-1}^*))\right)
+$$
 
 - Second-order accurate  
-- Works well for nonlinear problems  
+- Equivalent to Lax–Wendroff for linear problems  
+- Performs well for nonlinear PDEs  
 
 ---
 
-### 5. BTCS Scheme  
+### 5. BTCS Scheme
 - Implicit method  
 - Unconditionally stable  
 - First-order in time, second-order in space  
@@ -78,48 +92,59 @@ U(k, n+1) = 0.5 [U(k, n) + U*(k)
 
 ## 🔍 Stability Analysis
 
-Courant number:
+The Courant number is defined as:
+$$
+c = \frac{a \Delta t}{\Delta x}
+$$
 
-c = (a * dt) / dx
+Stability condition (CFL condition):
+$$
+c \leq 1
+$$
 
-Stability condition:
-
-c ≤ 1
-
-- If c > 1 → instability  
-- Stability depends on dt and dx  
+- If $c > 1$ → instability  
+- Stability depends on $\Delta t$ and $\Delta x$  
 
 ---
 
 ## 📊 Numerical Experiments
 
-### Linear Advection
-- Instability when c > 1  
-- Smaller dt → more diffusion  
-- Lax–Wendroff gives best accuracy  
-- BTCS always stable  
+### Linear Advection Equation
+- Instability observed when $c > 1$  
+- Smaller $\Delta t$ improves stability but increases diffusion  
+- Lax–Wendroff provides best accuracy  
+- BTCS remains stable for all $\Delta t$  
 
 ---
 
 ### Inviscid Burgers’ Equation
-- Flux: f(u) = u² / 2  
-- Best time step: dt = 0.1  
+
+Flux function:
+$$
+f(u) = \frac{u^2}{2}
+$$
+
+- Larger $\Delta t$ leads to instability  
+- Optimal choice:
+$$
+\Delta t = 0.1
+$$
 
 Observations:
-- MacCormack & Lax–Wendroff → sharper solutions  
-- Lax → more diffusive  
+- MacCormack and Lax–Wendroff capture steep gradients well  
+- Lax method introduces noticeable numerical diffusion  
 
 ---
 
 ## 📈 Key Findings
 
-- Explicit schemes are conditionally stable  
-- Governed by CFL condition  
+- All explicit schemes are **conditionally stable**  
+- Governed by the CFL condition  
 - Trade-off between:
   - Accuracy  
   - Stability  
-  - Efficiency  
-- Second-order methods perform better  
+  - Computational efficiency  
+- Second-order methods outperform first-order methods  
 
 ---
 
