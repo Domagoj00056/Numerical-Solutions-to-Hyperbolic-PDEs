@@ -135,34 +135,5 @@ $$
 ---
 
 ### Inviscid Burgers’ Equation
-
-Flux function:
-$$
-f(u) = \frac{u^2}{2}
-$$
-
 - Larger $\Delta t$ leads to instability  
-- Optimal choice:
-$$
-\Delta t = 0.1
-$$
-
-Observations:
-- MacCormack and Lax–Wendroff capture steep gradients well  
-- Lax method introduces noticeable numerical diffusion  
-
----
-
-## 📈 Key Findings
-
-- All explicit schemes are **conditionally stable**  
-- Governed by the CFL condition  
-- Trade-off between:
-  - Accuracy  
-  - Stability  
-  - Computational efficiency  
-- Second-order methods outperform first-order methods  
-
----
-
-## 📂 Project Structure
+- Optimal choice $ \Delta t = 0.1 $
