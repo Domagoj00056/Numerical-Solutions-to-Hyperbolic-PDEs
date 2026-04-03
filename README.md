@@ -7,7 +7,7 @@
 This project investigates the numerical solution of **hyperbolic partial differential equations (PDEs)** using finite difference methods. The focus is on both **linear** and **nonlinear** problems:
 
 $$
-\textbf{Linear advection equation: } \quad \frac{\partial u}{\partial t} + a \frac{\partial u}{\partial x} = 0
+\textbf{Linear advection equation: } \quad \frac{\partial u}{\partial t} +  \frac{\partial (au)}{\partial x} = 0
 $$
 
 $$
