@@ -15,7 +15,7 @@ The project combines theoretical analysis (stability and consistency) with numer
 ## 🧠 Mathematical Formulation
 
 ### Linear Advection Equation  
-du/dt + a * du/dx = 0
+$$ du/dt + a * du/dx = 0 $$
 
 ### Inviscid Burgers’ Equation  
 du/dt + d/dx (u² / 2) = 0
