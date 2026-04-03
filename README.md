@@ -114,9 +114,8 @@ $$
 **Corrector step**
 
 $$
-U_k^{n+1} = \frac{1}{2}\left[ U_k^n + U_k^{*} - \frac{\Delta t}{2\Delta x}\left( (U_k^{*})^2 - (U_{k-1}^{*})^2 \right) \right]
+U_k^{n+1} = \frac{1}{2} [ U_k^n + U_k^{*} - \frac{\Delta t}{2\Delta x} ( (U_k^{*})^2 - (U_{k-1}^{*})^2 ) ]
 $$
-
 
 
 
