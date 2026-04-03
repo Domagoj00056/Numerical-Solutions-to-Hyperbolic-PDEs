@@ -19,16 +19,11 @@ This project combines **theoretical analysis** (stability and consistency) with 
 
 ## Reflection on numerical methods being used
 From **Von Neumann stability analysi** and **consistency analysis** we obtained First Upwind Scheme is First-order accurate  Stable for $c \leq 1$ 
-- Stable for $c \leq 1$  
-- Introduces numerical diffusion
-  
 $$
-\textbf{ First Upwind Scheme }U_k^{n+1} = U_k^n - c \left(U_k^n - U_{k-1}^n \right)
+\textbf{ First Upwind Scheme }U_k^{n+1} = U_k^n - c \left(U_k^n - U_{k-1}^n \right). 
 $$
 
-- First-order accurate  
-- Stable for $c \leq 1$  
-- Introduces numerical diffusion  
+
 
 ---
 
