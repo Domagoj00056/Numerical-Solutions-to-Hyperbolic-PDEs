@@ -10,7 +10,8 @@ $$
 **Corrector step**
 
 $$
-U_k^{n+1} = \frac{1}{2}U_k^n + \frac{1}{2}U_k^{*} 
+U_k^{n+1} = \frac{1}{2}U_k^n + \frac{1}{2}U_k^{*} - \big((U_k^{*})^2 - (U_{k-1}^{*})^2\big)
+$$
 $$
 
 ## 📖 Overview
