@@ -1,0 +1,127 @@
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.linalg import solve_banded
+
+def initial_condition(x):
+    return np.where(
+        (x >= 50) & (x < 110),
+        100 * np.sin(np.pi * ((x - 50) / 60)),
+        0
+    )
+  
+def exact_solution(x, t, a):
+    return initial_condition(x - a*t)
+
+def first(u0, a, dx, dt, tsteps):
+    U = np.zeros((tsteps, len(u0)))  
+
+    U[0] = u0           # set initial condition
+    U[:,0] = u0[0]      # set left boundary condition
+    U[:,-1] = u0[-1]    # set right boundary condition
+
+    c = a*dt/dx
+
+    for t in range(tsteps-1):
+    
+            u_k = U[t, 1 : -1]       
+            u_left = U[t, : -2]
+            
+            U[t+1, 1:-1] = u_k - c * (u_k - u_left)
+    
+    return U
+
+def lax(u0, a, dx, dt, tsteps):
+    U = np.zeros((tsteps, len(u0)))  
+
+    U[0] = u0           # set initial condition
+    U[:,0] = u0[0]      # set left boundary condition
+    U[:,-1] = u0[-1]    # set right boundary condition
+
+    c_1 = (a * dt) / (2 * dx)
+    c_2 = (((a * dt) / dx) ** 2) / 2
+
+    for t in range(tsteps-1):
+
+        u_k = U[t, 1 : -1]       
+        u_right = U[t, 2:] 
+        u_left = U[t, : -2]
+
+        U[t+1, 1:-1] = u_k - c_1 * (u_right -  u_left) + c_2 * (u_right - (2 * u_k) +  u_left)
+
+    return U
+
+def btcs(u0, a, dx, dt, tsteps):
+    nx = len(u0)
+    U = np.zeros((tsteps, nx))
+    U[0] = u0
+
+    # coefficients (independent of U(t,x))
+    c = ((a * dt) / dx)  / 2   
+
+    ab = np.zeros((3, nx))
+    ab[0, 1:] = c      # upper diagonal
+    ab[1, :]  = 1          # main diagonal
+    ab[2, :-1] = -c     # lower diagonal
+
+    for t in range(tsteps - 1):
+        U_next = solve_banded((1,1), ab, U[t])
+
+        # boundary conditions
+        U_next[0] = u0[0]
+        U_next[-1] = u0[-1]
+
+        U[t + 1] = U_next
+        
+    return U
+
+def wrapper(a, T, dx, dt, method):
+    x = np.arange(0, 300 + dx, dx)
+
+    tsteps = int(T / dt) + 1
+    t = np.linspace(0, T, tsteps)
+
+    # Initial condition
+    u0 = initial_condition(x)
+
+    # Numerical method only
+    U_num = method(u0, a, dx, dt, tsteps)
+    
+    return x, t, U_num
+
+def run_dt_experiment(a, T, dx, dt_values, method):
+    results = {}
+
+    for dt in dt_values:
+        x, t, U_num = wrapper(a, T, dx, dt, method)
+
+        # exact only at final time
+        U_exact_final = exact_solution(x, T, a)
+
+        error = np.max(np.abs(U_exact_final - U_num[-1]))
+
+        results[dt] = { "x": x, "U_num": U_num, "U_exact": U_exact_final, "error": error}
+
+    return results
+
+
+
+def plot_dt_results(results, title="Solution comparison"):
+    plt.figure(figsize=(8,5))
+
+    # exact once
+    first_key = next(iter(results))
+    x = results[first_key]["x"]
+    U_exact = results[first_key]["U_exact"]
+    plt.plot(x, U_exact, 'k--', label="Exact")
+
+    # numerical
+    for dt, data in results.items():
+        plt.plot(x, data["U_num"][-1], label=f"dt={dt}")
+
+    plt.xlabel("x")
+    plt.ylabel("u(x, T)")
+    plt.title(title)
+    plt.legend()
+    plt.grid()
+    plt.show()
