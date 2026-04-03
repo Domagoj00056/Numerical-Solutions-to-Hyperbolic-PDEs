@@ -14,7 +14,7 @@ $$
 
 This project combines **theoretical analysis** (stability and consistency) with **numerical simulations** to investigate accuracy, stability, and computational efficiency. The theoretical analysis, including **Von Neumann stability analysis using Fourier modes** and **consistency analysis** is presented in the full report:
 
-📄 **Full Project Report:** [Click here to view the PDF](Project (2).pdf)
+📄 **Full Project Report:** [Click here to view the PDF](./Project (2).pdf)
 
 
 ## Reflection on numerical methods being used
