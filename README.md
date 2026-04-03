@@ -122,22 +122,7 @@ U_k^{n+1} = \frac{1}{2} (U_k^n + U_k^{*}) - \frac{\Delta t}{4\Delta x}\big(U_k^{
 $$
 
 
-## 🔍 Stability Analysis
 
-The Courant number is defined as:
-$$
-c = \frac{a \Delta t}{\Delta x}
-$$
-
-Stability condition (CFL condition):
-$$
-c \leq 1
-$$
-
-- If $c > 1$ → instability  
-- Stability depends on $\Delta t$ and $\Delta x$  
-
----
 
 ## 📊 Numerical Experiments
 
