@@ -9,7 +9,7 @@ $$
 **Corrector step**
 
 $$
-U_k^{n+1} = U_k^{*}^2
+U_k^{n+1} = (U_k^{*})^2
 $$
 
 ## 📖 Overview
