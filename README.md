@@ -10,6 +10,9 @@ $$
 \textbf{Linear advection equation: } \quad \frac{\partial u}{\partial t} + a \frac{\partial u}{\partial x} = 0
 $$
 
+$$
+\textbf{Non-linear Inviscid Burgers’ Equation: }\frac{\partial u}{\partial t} + \frac{\partial}{\partial x}\left(\frac{u^2}{2}\right) = 0
+$$
 - Inviscid Burgers’ equation  
 
 The project combines **theoretical analysis** (stability and consistency) with **numerical simulations** to study accuracy, stability, and computational efficiency.
@@ -18,12 +21,8 @@ The project combines **theoretical analysis** (stability and consistency) with *
 
 ## 🧠 Mathematical Formulation
 
-### Linear Advection Equation
 
-### Inviscid Burgers’ Equation
-$$
-\frac{\partial u}{\partial t} + \frac{\partial}{\partial x}\left(\frac{u^2}{2}\right) = 0
-$$
+
 
 ### Conservation Form
 $$
