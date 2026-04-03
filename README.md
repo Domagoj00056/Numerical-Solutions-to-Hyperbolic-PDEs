@@ -97,6 +97,14 @@ with flux functions:
 
 The Lax and MacCormack schemes are first derived for the advection equation using $f(u) = au$, and then extended to the inviscid Burgers’ equation by replacing the flux with $f(u) = \frac{u^2}{2}$.
 
+Hence Lax inviscid Burgers’ equation becomes
+
+$$
+U_k^{n+1}
+= \frac{1}{2}\left(U_{k+1}^n + U_{k-1}^n\right)
+-\frac{ \Delta t}{4\Delta x}\left((U_{k+1}^n)^2 - (U_{k-1}^n)^2 \right).
+$$
+
 
 
 
