@@ -73,6 +73,13 @@ $$
 \frac{c}{2} U_{k-1}^{n+1} - U_k^{n+1} - \frac{c}{2} U_{k+1}^{n+1} = -U_k^n
 $$
 
+## Transformation of  Lax method and the MacCormack methods for Advection to Inviscid Burgers’ Equation
+
+
+
+
+
+
 ## 🔍 Stability Analysis
 
 The Courant number is defined as:
