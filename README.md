@@ -12,7 +12,7 @@ $$
 $$
 
 
-This project combines **theoretical analysis** (stability and consistency) with **numerical simulations** to investigate accuracy, stability, and computational efficiency. The theoretical analysis—including **Von Neumann stability analysis using Fourier modes** and **consistency analysis**—is presented in the full report:
+This project combines **theoretical analysis** (stability and consistency) with **numerical simulations** to investigate accuracy, stability, and computational efficiency. The theoretical analysis, including **Von Neumann stability analysis using Fourier modes** and **consistency analysis** is presented in the full report:
 
 📄 **Full Project Report:** [Click here to view the PDF](./Project.pdf)
 
@@ -74,7 +74,7 @@ $$
 $$
 
 ## Transformation of  Lax method and the MacCormack methods for Advection to Inviscid Burgers’ Equation
-
+Here we 
 
 
 
