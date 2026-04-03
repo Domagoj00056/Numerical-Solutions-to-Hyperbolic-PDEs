@@ -100,17 +100,17 @@ The Lax and MacCormack schemes are first derived for the advection equation usin
 Hence, the Lax scheme for the inviscid Burgers’ equation becomes:
 
 $$
-U_k^{n+1} = \frac{1}{2}\left(U_{k+1}^n + U_{k-1}^n\right) - \frac{\Delta t}{4\Delta x}\left((U_{k+1}^n)^2 - (U_{k-1}^n)^2 \right)
+U_k^{n+1} = \frac{1}{2}\left(U_{k+1}^n + U_{k-1}^n\right) - \frac{\Delta t}{4\Delta x}\left((U_{k+1}^n)^2 - (U_{k-1}^n)^2\right)
 $$
 
 Similarly, the MacCormack method is given by:
 
 $$
-\textbf{Predictor step:} \quad U_k^{*} = U_k^n - \frac{\Delta t}{2\Delta x}\left[(U_{k+1}^n)^2 - (U_k^n)^2\right]
+\textbf{Predictor step:} \quad U_k^{*} = U_k^n - \frac{\Delta t}{2\Delta x}\left((U_{k+1}^n)^2 - (U_k^n)^2\right)
 $$
 
 $$
-\textbf{Corrector step:} \quad U_k^{n+1} = \frac{1}{2}\left[U_k^n + U_k^{*} - \frac{\Delta t}{2\Delta x}\left((U_k^{*})^2 - (U_{k-1}^{*})^2\right)\right]
+\textbf{Corrector step:} \quad U_k^{n+1} = \frac{1}{2}\left(U_k^n + U_k^{*} - \frac{\Delta t}{2\Delta x}\left((U_k^{*})^2 - (U_{k-1}^{*})^2\right)\right)
 $$
 
 
