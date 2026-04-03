@@ -53,7 +53,7 @@ $$
 
 $$
 \textbf{BTCS Scheme:} \quad 
-\frac{U_k^{n+1} - U_k^n}{\Delta t} = -a \frac{U_{k+1}^{n+1} - U_{k-1}^{n+1}}{2\Delta x}
+\frac{c}{2} U_{k-1}^{n+1} - U_k^{n+1} - \frac{c}{2} U_{k+1}^{n+1} = -U_k^n
 $$
 
 ## 📖 Overview
