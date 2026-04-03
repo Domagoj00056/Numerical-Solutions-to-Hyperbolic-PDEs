@@ -1,5 +1,61 @@
 # Numerical-Solutions-to-Hyperbolic-PDEs
 
+## Reflection on numerical methods being used
+
+From **Von Neumann stability analysis** and **consistency analysis**, we obtain the following properties for each scheme:
+
+---
+
+### First Upwind Scheme
+
+- First-order accurate (in space and time)  
+- Stable for $c \leq 1$  
+- Introduces numerical diffusion  
+
+$$
+\textbf{First Upwind Scheme:} \quad 
+U_k^{n+1} = U_k^n - c \left(U_k^n - U_{k-1}^n \right)
+$$
+
+---
+
+### Lax Method
+
+- First-order accurate  
+- Stable for $c \leq 1$  
+- More diffusive than higher-order methods  
+
+$$
+\textbf{Lax Method:} \quad 
+U_k^{n+1} = \frac{1}{2}(U_{k+1}^n + U_{k-1}^n) - \frac{c}{2}(U_{k+1}^n - U_{k-1}^n)
+$$
+
+---
+
+### Lax–Wendroff Method
+
+- Second-order accurate (in space and time)  
+- Stable for $c \leq 1$  
+- Better at capturing sharp gradients  
+
+$$
+\textbf{Lax–Wendroff Method:} \quad 
+U_k^{n+1} = U_k^n - \frac{c}{2}(U_{k+1}^n - U_{k-1}^n) + \frac{c^2}{2}(U_{k-1}^n - 2U_k^n + U_{k+1}^n)
+$$
+
+---
+
+### BTCS Scheme
+
+- First-order accurate in time, second-order in space  
+- Unconditionally stable  
+- May introduce non-physical oscillations  
+
+$$
+\textbf{BTCS Scheme:} \quad 
+\frac{U_k^{n+1} - U_k^n}{\Delta t} = -a \frac{U_{k+1}^{n+1} - U_{k-1}^{n+1}}{2\Delta x}
+$$
+
 ## 📖 Overview
 This project investigates the numerical solution of **hyperbolic partial differential equations (PDEs)** using finite difference methods. The focus is on both **linear** and **nonlinear** problems:
 
