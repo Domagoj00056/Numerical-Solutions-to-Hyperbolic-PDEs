@@ -108,7 +108,7 @@ $$
 Similarly, the MacCormack method is given by:
 
 $$
-\textbf{Predictor step:} \quad
+\textbf{Predictor step:} 
 U_k^{*}
 =
 U_k^n
@@ -120,8 +120,7 @@ U_k^n
 $$
 
 $$
-\textbf{Corrector step:} \quad
-U_k^{n+1}
+\textbf{Corrector step:} U_k^{n+1}
 =
 \frac{1}{2}\left[
 U_k^n + U_k^{*}
