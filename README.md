@@ -1,8 +1,5 @@
 # Numerical-Solutions-to-Hyperbolic-PDEs
 
-
-# 📊 Numerical Solution of Hyperbolic PDEs
-
 ## 📖 Overview
 This project investigates the numerical solution of **hyperbolic partial differential equations (PDEs)** using finite difference methods. The focus is on both **linear** and **nonlinear** problems:
 
