@@ -115,16 +115,62 @@ $$
 
 
 
-## 📊 Numerical Experiments
+## 📊 Numerical Experiments and Key Findings
 
 ### Linear Advection Equation
-- Instability observed when $c > 1$  
-- Smaller $\Delta t$ improves stability but increases diffusion  
-- Lax–Wendroff provides best accuracy  
-- BTCS remains stable for all $\Delta t$  
+
+- All explicit schemes (First Upwind, Lax, Lax–Wendroff) are **conditionally stable** and satisfy the CFL condition:
+  $$
+  C = \frac{a \Delta t}{\Delta x} \leq 1
+  $$
+
+- Instability is observed when $C > 1$. For example, with $\Delta x = 5$ and $\Delta t = 0.021$, both the **Upwind** and **Lax–Wendroff** schemes become unstable, confirming theoretical predictions.
+
+- For stable time steps:
+  - **First Upwind** and **Lax** methods are **first-order accurate** and exhibit **numerical diffusion**, leading to smeared solutions.
+  - **Lax–Wendroff** is **second-order accurate** and provides significantly better resolution of the solution profile.
+
+- Decreasing $\Delta t$ improves stability but increases diffusion, highlighting the trade-off between **accuracy and numerical dissipation**.
+
+- The **BTCS scheme** is **unconditionally stable**, but reducing $\Delta t$ and $\Delta x$ together is necessary to avoid non-physical oscillations and improve solution quality.
 
 ---
 
 ### Inviscid Burgers’ Equation
-- Larger $\Delta t$ leads to instability  
-- Optimal choice $ \Delta t = 0.1 $
+
+- Nonlinearity is handled by rewriting the equation in conservation form with flux:
+  $$
+  f(u) = \frac{u^2}{2}
+  $$
+
+- The **Lax** and **MacCormack** methods were successfully adapted using this flux formulation.
+
+- Stability strongly depends on the time step:
+  - $\Delta t = 0.14$ → unstable behaviour over time  
+  - $\Delta t = 0.1$ and $0.05$ → stable solutions  
+
+- The optimal choice was:
+  $$
+  \Delta t = 0.1
+  $$
+  which provided the best balance between **stability and accuracy**.
+
+- In comparison with exact solutions at $t = 2.4$:
+  - **MacCormack** and **Lax–Wendroff** methods capture steep gradients more accurately  
+  - **Lax method** introduces noticeable **numerical diffusion**
+
+---
+
+### Overall Observations
+
+- There is a clear trade-off between:
+  - Stability  
+  - Accuracy  
+  - Computational efficiency  
+
+- **First-order methods** are more stable but diffusive  
+- **Second-order methods** provide higher accuracy but require careful parameter selection  
+
+- The **CFL condition** plays a crucial role in ensuring stability for explicit schemes  
+
+- Careful selection of $\Delta t$ and $\Delta x$ is essential, particularly for nonlinear problems, to achieve reliable and physically meaningful solutions.
