@@ -106,13 +106,12 @@ $$
 Similarly, the MacCormack method is given by:
 
 $$
-\textbf{Predictor step:} \quad U_k^{*} = U_k^n - \frac{\Delta t}{2\Delta x}\left( (U_{k+1}^n) ^2 - (U_k^n )^2\right)
+\textbf{Predictor step:} \quad U_k^{*} = U_k^n - \frac{\Delta t}{2\Delta x}\big((U_{k+1}^n)^2 - (U_k^n)^2\big)
 $$
 
 $$
-\textbf{Corrector step:} \quad U_k^{n+1} = \frac{1}{2}\left(U_k^n + U_k^{*} - \frac{\Delta t}{2\Delta x}\left((U_k^{*})^2 - (U_{k-1}^{*})^2\right)\right)
+\textbf{Corrector step:} \quad U_k^{n+1} = \frac{1}{2}\big(U_k^n + U_k^{*} - \frac{\Delta t}{2\Delta x}\big((U_k^{*})^2 - (U_{k-1}^{*})^2\big)\big)
 $$
-
 
 
 
