@@ -1,5 +1,15 @@
 # Numerical-Solutions-to-Hyperbolic-PDEs
 
+**Predictor step**
+$$
+U_k^{*} = U_k^n - \frac{\Delta t}{2\Delta x}\big((U_{k+1}^n)^2 - (U_k^n)^2\big)
+$$
+
+**Corrector step**
+$$
+U_k^{n+1} = \frac{1}{2}\big(U_k^n + U_k^{*} - \frac{\Delta t}{2\Delta x}\big((U_k^{*})^2 - (U_{k-1}^{*})^2\big)\big)
+$$
+
 ## 📖 Overview
 This project investigates the numerical solution of **hyperbolic partial differential equations (PDEs)** using finite difference methods. The focus is on both **linear** and **nonlinear** problems:
 
