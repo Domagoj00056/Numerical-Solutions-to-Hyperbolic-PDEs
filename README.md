@@ -7,7 +7,7 @@ U_k^{*} = U_k^n - \frac{\Delta t}{2\Delta x}\big((U_{k+1}^n)^2 - (U_k^n)^2\big)
 $$
 
 $$
-U_k^{n+1} = \frac{1}{2}U_k^n + \frac{1}{2}U_k^{*} - \frac{\Delta t}{4\Delta x}\big(U_k^{*2} - U_{k-1}^{*2}\big)
+U_k^{n+1} = \frac{1}{2} (U_k^n + U_k^{*}) - \frac{\Delta t}{4\Delta x}\big(U_k^{*2} - U_{k-1}^{*2}\big)
 $$
 
 ## 📖 Overview
