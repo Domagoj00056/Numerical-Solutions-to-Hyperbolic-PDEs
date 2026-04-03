@@ -102,9 +102,35 @@ Hence Lax inviscid Burgers’ equation becomes
 $$
 U_k^{n+1}
 = \frac{1}{2}\left(U_{k+1}^n + U_{k-1}^n\right)
--\frac{ \Delta t}{4\Delta x}\left((U_{k+1}^n)^2 - (U_{k-1}^n)^2 \right).
+-\frac{ \Delta t}{4\Delta x}\left((U_{k+1}^n)^2 - (U_{k-1}^n)^2 \right)
 $$
 
+and
+
+$$
+\textbf{Predictor step:} 
+U_k^{*}
+=
+U_k^n
+-
+\frac{\Delta t}{2\Delta x}
+\left[
+(U_{k+1}^n)^2 - (U_k^n)^2
+\right].
+$$
+
+$$
+\textbf{Corrector step:} U_k^{n+1}
+=
+\frac{1}{2}\left[
+U_k^n + U_k^{*}
+-
+\frac{\Delta t}{2\Delta x}
+\left(
+(U_k^{*})^2 - (U_{k-1}^{*})^2
+\right)
+\right].
+$$
 
 
 
