@@ -6,7 +6,10 @@
 ## 📖 Overview
 This project investigates the numerical solution of **hyperbolic partial differential equations (PDEs)** using finite difference methods. The focus is on both **linear** and **nonlinear** problems:
 
-- Linear advection equation  
+$$
+\textnorml{Linear advection equation: }\frac{\partial u}{\partial t} + a \frac{\partial u}{\partial x} = 0
+$$
+
 - Inviscid Burgers’ equation  
 
 The project combines **theoretical analysis** (stability and consistency) with **numerical simulations** to study accuracy, stability, and computational efficiency.
@@ -16,9 +19,6 @@ The project combines **theoretical analysis** (stability and consistency) with *
 ## 🧠 Mathematical Formulation
 
 ### Linear Advection Equation
-$$
-\frac{\partial u}{\partial t} + a \frac{\partial u}{\partial x} = 0
-$$
 
 ### Inviscid Burgers’ Equation
 $$
