@@ -68,11 +68,13 @@ $$
 ### 4. MacCormack Method
 
 **Predictor:**
+
 $$
 U_k^* = U_k^n - \frac{\Delta t}{\Delta x} \left[f(U_{k+1}^n) - f(U_k^n)\right]
 $$
 
 **Corrector:**
+
 $$
 U_k^{n+1} = \frac{1}{2}\left(U_k^n + U_k^* - \frac{\Delta t}{\Delta x}(f(U_k^*) - f(U_{k-1}^*))\right)
 $$
