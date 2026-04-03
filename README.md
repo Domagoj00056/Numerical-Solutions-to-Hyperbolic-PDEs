@@ -119,10 +119,8 @@ $$
 
 ### Linear Advection Equation
 
-- All explicit schemes (First Upwind, Lax, Lax–Wendroff) are **conditionally stable** and satisfy the CFL condition:
-  $$
-  C = \frac{a \Delta t}{\Delta x} \leq 1
-  $$
+- All explicit schemes (First Upwind, Lax, Lax–Wendroff) are **conditionally stable** and satisfy the CFL condition:  
+  $C = \frac{a \Delta t}{\Delta x} \leq 1$
 
 - Instability is observed when $C > 1$. For example, with $\Delta x = 5$ and $\Delta t = 0.021$, both the **Upwind** and **Lax–Wendroff** schemes become unstable, confirming theoretical predictions.
 
@@ -138,10 +136,8 @@ $$
 
 ### Inviscid Burgers’ Equation
 
-- Nonlinearity is handled by rewriting the equation in conservation form with flux:
-  $$
-  f(u) = \frac{u^2}{2}
-  $$
+- Nonlinearity is handled by rewriting the equation in conservation form with flux:  
+  $f(u) = \frac{u^2}{2}$
 
 - The **Lax** and **MacCormack** methods were successfully adapted using this flux formulation.
 
@@ -149,11 +145,7 @@ $$
   - $\Delta t = 0.14$ → unstable behaviour over time  
   - $\Delta t = 0.1$ and $0.05$ → stable solutions  
 
-- The optimal choice was:
-  $$
-  \Delta t = 0.1
-  $$
-  which provided the best balance between **stability and accuracy**.
+- The optimal choice was $\Delta t = 0.1$, which provided the best balance between **stability and accuracy**.
 
 - In comparison with exact solutions at $t = 2.4$:
   - **MacCormack** and **Lax–Wendroff** methods capture steep gradients more accurately  
