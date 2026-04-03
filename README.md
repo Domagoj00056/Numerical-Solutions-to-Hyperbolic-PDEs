@@ -108,11 +108,7 @@ $$
 Similarly, the MacCormack method is given by:
 
 $$
-\textbf{Predictor step:} 
-U_k^{*}
-=
-U_k^n
--
+\textbf{Predictor step:} U_k^{*} = U_k^n-
 \frac{\Delta t}{2\Delta x}
 \left[
 (U_{k+1}^n)^2 - (U_k^n)^2
@@ -120,11 +116,9 @@ U_k^n
 $$
 
 $$
-\textbf{Corrector step:} U_k^{n+1}
-=
+\textbf{Corrector step:} U_k^{n+1} =
 \frac{1}{2}\left[
-U_k^n + U_k^{*}
--
+U_k^n + U_k^{*} -
 \frac{\Delta t}{2\Delta x}
 \left(
 (U_k^{*})^2 - (U_{k-1}^{*})^2
