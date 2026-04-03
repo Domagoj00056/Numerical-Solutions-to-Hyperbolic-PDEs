@@ -1,0 +1,118 @@
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.linalg import solve_banded
+
+def initial_condition(x):
+    return np.where((x >= 0) & (x < 2), 1,
+                    np.where((x >= 2) & (x <= 4), 0, 0))
+
+def exact_solution(x, t):
+    return np.where((x >= 0) & (x < 2 + t/2), 1,
+                    np.where((x >= 2 + t/2) & (x <= 4), 0, 0))
+
+def lax_burger(u0, dx, dt, tsteps):
+    U = np.zeros((tsteps, len(u0)))  
+
+    U[0] = u0           # set initial condition
+    U[:,0] = u0[0]      # set left boundary condition
+    U[:,-1] = u0[-1]    # set right boundary condition
+
+    A = dt / (4 * dx)
+
+    for t in range(tsteps-1):
+
+        u_k = U[t, 1 : -1]       
+        u_right = U[t, 2:] 
+        u_left = U[t, : -2]
+
+        U[t+1, 1:-1] = (1 / 2) * (u_left + u_right) + A * (u_left**2 - u_right**2)
+
+    return U
+
+
+def MacCormack_burger(u0, dx, dt, tsteps):
+    U = np.zeros((tsteps, len(u0)))  
+
+    U[0] = u0
+    U[:, 0] = u0[0]
+    U[:, -1] = u0[-1]
+
+    A = dt / (2 * dx)
+
+    for t in range(tsteps - 1):
+
+        u = U[t]
+
+        # Predictor
+        U_star = np.copy(u)
+        U_star[1:-1] = u[1:-1] - A * (u[2:]**2 - u[1:-1]**2)
+
+        # Corrector
+        U[t+1, 1:-1] = 0.5 * (u[1:-1] + U_star[1:-1] - A * (U_star[1:-1]**2 - U_star[:-2]**2))
+
+    return U
+
+def wrapper_burger(T, dx, dt, method):
+    x = np.arange(0, 4 + dx, dx)
+
+    tsteps = int(T / dt) + 1
+    t = np.linspace(0, T, tsteps)
+
+    # Initial condition
+    u0 = initial_condition(x)
+
+    # Numerical method 
+    U_num = method(u0, dx, dt, tsteps)
+    
+    return x, t, U_num
+
+def run_experiment(method, dx, dt_values, T_values, method_name="Method"):
+    
+    colors = plt.cm.viridis(np.linspace(0, 1, len(T_values)))
+    
+    for dt in dt_values:
+        plt.figure()
+        
+        for i, T in enumerate(T_values):
+            x, t, U = wrapper_burger(T, dx, dt, method)
+            
+            # Numerical (solid)
+            plt.plot(x, U[-1], color=colors[i], label=f"T={T} (num)")
+            
+            # Exact (same color, dashed)
+            u_exact = exact_solution(x, T)
+            plt.plot(x, u_exact, linestyle='--', color=colors[i], linewidth=2,
+                     label=f"T={T} (exact)")
+        
+        plt.title(f"{method_name}, dt={dt}")
+        plt.xlabel("x")
+        plt.ylabel("u(x,t)")
+        plt.legend()
+        plt.grid()
+    
+    plt.show()
+
+def run_experiment_part_ii(method, dx, dt_values, T, method_name="Method"):
+    
+    x = np.linspace(0, 4, int(4/dx) + 1)
+    u_exact = exact_solution(x, T)
+    
+    for dt in dt_values:
+        plt.figure()
+        
+        x, t, U = wrapper_burger(T, dx, dt, method)
+        
+        # Numerical
+        plt.plot(x, U[-1], label="Numerical")
+        
+        # Exact
+        plt.plot(x, u_exact, 'k--', linewidth=2, label="Exact")
+        
+        plt.title(f"{method_name}, dt={dt}, T={T}")
+        plt.xlabel("x")
+        plt.ylabel("u(x,t)")
+        plt.legend()
+        plt.grid()
+    
+    plt.show()
