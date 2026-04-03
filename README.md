@@ -106,7 +106,7 @@ $$
 Similarly, the MacCormack method is given by:
 
 $$
-\textbf{Predictor step:} \quad U_k^{*} = U_k^n - \frac{\Delta t}{2\Delta x}\left((U_{k+1}^n)^2 - (U_k^n)^2\right))
+\textbf{Predictor step:} \quad U_k^{*} = U_k^n - \frac{\Delta t}{2\Delta x}\left( (U_{k+1}^n) ^2 - (U_k^n )^2\right)
 $$
 
 $$
